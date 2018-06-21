@@ -1,0 +1,63 @@
+/* === GLOBAL === */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 24px;
+}
+
+html, body {
+  background-color: #dfe6e9;
+}
+
+button {
+  width: 150px;
+  background-color: #55efc4;
+  border: 2px solid #00b894;
+  border-radius: 12px;
+  margin: 12px;
+  outline: none;
+}
+
+button:hover {
+  background-color: #81ecec;
+}
+
+/* === BOARD === */
+
+.board {
+  display: flex;
+  width: 387px;
+  flex-wrap: wrap;
+  padding: 6px;
+  margin: 24px auto;
+}
+
+.square {
+  width: 125px;
+  height: 125px;
+  border: 2px solid #2d3436;
+  background-color: #ffeaa7;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 125px;
+  font-size: 3em;
+  color: #e17055;
+}
+
+/* === SCORE === */
+
+.scoreboard {
+  text-align: center;
+}
+
+.score {
+  display: flex;
+  justify-content: center;
+}
+
+.playerscore {
+  margin: 12px 24px;
+}
