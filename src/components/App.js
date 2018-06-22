@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 
-function checkForWin(squares) {
+const WIN_CONDITIONS = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
+];
+
+export function checkForWin(squares) {
   let winner = false;
   let player = '';
-  const winConditions = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-  ];
 
-  for (let i = 0; i < winConditions.length; i++) {
-    const [a, b, c] = winConditions[i];
+  for (let i = 0; i < WIN_CONDITIONS.length; i++) {
+    const [a, b, c] = WIN_CONDITIONS[i];
     if (squares[a] + squares[b] + squares[c] === 'XXX'
       || squares[a] + squares[b] + squares[c] === 'OOO') {
         player = squares[a];
@@ -25,15 +26,24 @@ function checkForWin(squares) {
   return [winner, player];
 }
 
-function checkForDraw(squares) {
+export function checkForDraw(squares) {
   let draw = true;
+  let empty = false;
+  for (let i = 0; i < WIN_CONDITIONS.length; i++) {
+    const [a, b, c] = WIN_CONDITIONS[i];
+    if (squares[a] + squares[b] + squares[c] === 'XXX'
+      || squares[a] + squares[b] + squares[c] === 'OOO') {
+        draw = false;
+        break;
+    }
+  }
   for (let i = 0; i < 9; i++) {
     if (squares[i] === '') {
-      draw = false;
+      empty = true;
       break;
     }
   }
-  return draw;
+  return draw === !empty;
 }
 
 function Square(props) {
@@ -42,7 +52,7 @@ function Square(props) {
   )
 }
 
-function Board(props) {
+export function Board(props) {
   return (
     <div className='board'>
       <Square onClick={props.onClick} />
