@@ -97,7 +97,6 @@ class Game extends Component {
     }
 
     this.handleClick = this.handleClick.bind(this);
-    this.handleGameStatus = this.handleGameStatus.bind(this);
     this.handleReset = this.handleReset.bind(this);
   }
 
